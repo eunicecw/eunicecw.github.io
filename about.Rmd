@@ -1,0 +1,37 @@
+---
+title: "About me"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+### About me
+
+* Legal Name: Can Wang
+* Preferred Name: Eunice Wang
+* Contact Information: cw3555@cumc.columbia.edu, (646) 209-9622
+
+### Education
+
+* **Columbia University Mailman School of Public Health**, New York, NY
+* Master of Science in Biostatistics; Specialization in Public Health Data Science
+* Expected May 2025
+* Here's a link to the [school](https://www.publichealth.columbia.edu/) page
+
+* **Vanderbilt University**, Nashville, TN
+* Bachelor of Arts; Majors: Mathematics; Economics; Philosophy; 
+* Aug 2016 – May 2020
+* Here's a link to the [school](https://www.vanderbilt.edu/) page
+
+### Professional experience
+
+* **LIFE SCIENCES CONSULTING EXPERIENCE**
+* **Illuminera**, Shanghai, China
+* Here's a link to the [company](https://m.illuminera.com) page
+* Position: 
+* *MedX Assistant Manager*, Jan 2023–June 2023
+* *MedX Senior Analyst*,Dec 2021–Dec 2022
+
+
+
