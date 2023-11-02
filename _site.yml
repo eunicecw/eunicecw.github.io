@@ -5,10 +5,13 @@ navbar:
   right:
     - text: "About me"
       href: about.html
+    - text: "Dashboard"
+      href: dashboard.html
     - icon: fa-envelope fa-lg
       href: mailto:<cw3555@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: http://github.com/eunicecw/
+
 output:
   html_document:
     theme: sandstone

@@ -10,4 +10,4 @@ output:
 
 * This website is about my academic and professional experience
 
-I'm currently a Master of Science student in Biostatistics at Columbia University Mailman School of Public Health. For more information about me, see the following [about me](about.html) page.
+I'm currently a Master of Science student in Biostatistics at Columbia University Mailman School of Public Health. For more information about me, see the following [about me](about.html) page. For examples of interactive data visualizations I made using 'plotly' in R, see the following [dashboard](dashboard.html) page.

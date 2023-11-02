@@ -1,0 +1,80 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+
+data("rest_inspec")
+
+rest_inspec=
+  rest_inspec |> 
+  separate(grade_date,sep = "-", into = c("year","month","day")) |> 
+  mutate(cuisine_description=
+    str_replace_all(cuisine_description,c(
+      	"Bottled beverages, including water, sodas, juices, etc." = "Bottled beverages",
+      	"CafÃ©/Coffee/Tea"= "Coffe & Tea",
+      	"Ice Cream, Gelato, Yogurt, Ices"= "Ice Cream",
+      	"Vietnamese/Cambodian/Malaysia"= "Southeast Asian",
+      	" \\s*\\([^\\)]+\\)"= "")
+    )
+  ) |> 
+  select(grade, boro, street, score, critical_flag, cuisine_description, year, month ) |> 
+  drop_na(grade, year, score) |> 
+  filter(!boro %in% c("Missing",""))
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Distribution of Restaurant Inspection Scores by Borough across years
+
+```{r}
+rest_inspec |> 
+  mutate(text_label = str_c("Year: ", year, "\nScore: ", score)) |> 
+  plot_ly(
+    x = ~year, y = ~score, color = ~boro, text = ~text_label, 
+    type = "scatter", mode = "markers", alpha = 0.5) |> 
+    layout(title="Distribution of Restaurant Inspection Scores by Borough across years",
+         xaxis=list(title="Year"),
+         yaxis=list(title="Restaurant Inspection Scores"))
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Distribution of Restaurant Inspection Scores by Borough in 2013
+
+```{r}
+rest_inspec |> 
+  filter(year==2013) |> 
+  mutate(zipcode = fct_reorder(boro, score)) |> 
+  plot_ly(y = ~score, color = ~boro, type = "box", colors = "viridis") |> 
+  layout(title="Distribution of Restaurant Inspection Scores by Borough in 2013",
+         xaxis=list(title="Borough"),
+         yaxis=list(title="Restaurant Inspection Scores"))
+```
+
+### Number of Cuisine Type Inspected in 2013
+
+```{r}
+rest_inspec |> 
+  filter(year==2013) |> 
+  count(cuisine_description) |> 
+  mutate(cuisine_description = fct_reorder(cuisine_description, n)) |> 
+  plot_ly(
+    x = ~cuisine_description, y = ~n, color = ~cuisine_description,
+    type = "bar", colors = "viridis") |> 
+  layout(title="Number of Cuisine Type Inspected in 2013",
+         xaxis=list(title="Cuisine Type"),
+         yaxis=list(title="Count"))
+```
+
