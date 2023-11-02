@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "NYC Restaurant Inspection Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -32,10 +32,10 @@ rest_inspec=
   filter(!boro %in% c("Missing",""))
 ```
 
-Column {data-width=650}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Distribution of Restaurant Inspection Scores by Borough across years
+### Scatter plot
 
 ```{r}
 rest_inspec |> 
@@ -48,10 +48,10 @@ rest_inspec |>
          yaxis=list(title="Restaurant Inspection Scores"))
 ```
 
-Column {data-width=350}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Distribution of Restaurant Inspection Scores by Borough in 2013
+### Box plot
 
 ```{r}
 rest_inspec |> 
@@ -63,7 +63,7 @@ rest_inspec |>
          yaxis=list(title="Restaurant Inspection Scores"))
 ```
 
-### Number of Cuisine Type Inspected in 2013
+### Bar chart
 
 ```{r}
 rest_inspec |> 
